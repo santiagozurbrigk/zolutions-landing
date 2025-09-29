@@ -1,3 +1,5 @@
+import Button from './Button';
+
 function CaseStudies() {
   const cases = [
     {
@@ -39,9 +41,9 @@ function CaseStudies() {
         </div>
 
         <div className="text-center">
-          <button className="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-light transition-all duration-300 shadow-lg hover:scale-105 animate-fade-in-up">
+          <Button variant="primary" size="lg" className="shadow-lg hover:scale-105 animate-fade-in-up">
             Ver una demo en acción
-          </button>
+          </Button>
         </div>
       </div>
     </section>

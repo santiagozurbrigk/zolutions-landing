@@ -27,7 +27,7 @@ function Testimonials() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300 animate-fade-in-up hover:scale-105" style={{animationDelay: `${index * 200}ms`}}>
+            <div key={index} className="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300 animate-fade-in-up hover:scale-105 text-left" style={{animationDelay: `${index * 200}ms`}}>
               <p className="text-gray-700 text-lg mb-6 italic">
                 "{testimonial.quote}"
               </p>

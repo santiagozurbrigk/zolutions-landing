@@ -1,3 +1,5 @@
+import Button from './Button';
+
 function CTA() {
   return (
     <section className="py-32 bg-white pb-48">
@@ -8,9 +10,9 @@ function CTA() {
         <p className="text-xl text-gray-600 mb-8">
           Solicitá una demo gratuita y descubrí cómo Zolutions puede ayudarte a crecer.
         </p>
-        <button className="bg-primary text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-primary-light transition-colors shadow-lg">
+        <Button variant="primary" size="xl" className="shadow-lg">
           Solicitar demo gratuita
-        </button>
+        </Button>
       </div>
     </section>
   );

@@ -109,3 +109,61 @@ body {
   animation-delay: 600ms;
 }
 
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Animaciones 3D para el mockup */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateY(var(--rotate-y, 0deg)) rotateX(var(--rotate-x, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotateY(var(--rotate-y, 0deg)) rotateX(var(--rotate-x, 0deg));
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Perspectiva 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Rotaciones 3D personalizadas */
+.rotate-y-12 {
+  --rotate-y: 12deg;
+  transform: rotateY(12deg);
+}
+
+.rotate-x-8 {
+  --rotate-x: 8deg;
+  transform: rotateX(8deg);
+}
+
+.rotate-y-\[-8deg\] {
+  --rotate-y: -8deg;
+  transform: rotateY(-8deg);
+}
+
+.rotate-x-4 {
+  --rotate-x: 4deg;
+  transform: rotateX(4deg);
+}
+
+.rotate-y-\[-15deg\] {
+  --rotate-y: -15deg;
+  transform: rotateY(-15deg);
+}
+
+.rotate-x-\[-5deg\] {
+  --rotate-x: -5deg;
+  transform: rotateX(-5deg);
+}
+

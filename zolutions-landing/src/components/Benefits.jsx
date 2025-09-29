@@ -1,3 +1,5 @@
+import Button from './Button';
+
 function Benefits() {
   const benefits = [
     {
@@ -108,9 +110,9 @@ function Benefits() {
             <p className="text-gray-600 mb-6">
               Descubre cómo nuestros clientes han transformado sus negocios con soluciones personalizadas
             </p>
-            <button className="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-light transition-all duration-300 shadow-lg hover:scale-105">
+            <Button variant="primary" size="lg" className="shadow-lg hover:scale-105">
               Ver casos de éxito
-            </button>
+            </Button>
           </div>
         </div>
       </div>

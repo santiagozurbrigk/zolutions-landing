@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Button from './Button';
 
 function Process() {
   const [activeStep, setActiveStep] = useState(0);
@@ -67,14 +68,34 @@ function Process() {
       const scrollTop = window.pageYOffset;
       const windowHeight = window.innerHeight;
 
-      // Calcular el progreso del scroll en la sección (0 a 1)
-      const scrollProgress = Math.max(0, Math.min(1, (scrollTop - sectionTop + windowHeight * 0.5) / (sectionHeight - windowHeight * 0.5)));
+      // Calcular cuando la sección entra en el viewport
+      const sectionBottom = sectionTop + sectionHeight;
+      const viewportTop = scrollTop;
+      const viewportBottom = scrollTop + windowHeight;
       
-      // Determinar qué paso está activo basado en el scroll
-      const newActiveStep = Math.max(0, Math.min(steps.length - 1, Math.floor(scrollProgress * steps.length)));
+      // Verificar si la sección está visible en el viewport
+      const isSectionVisible = viewportBottom > sectionTop && viewportTop < sectionBottom;
       
-      if (newActiveStep !== activeStep) {
-        setActiveStep(newActiveStep);
+      if (isSectionVisible) {
+        // Calcular el progreso del scroll dentro de la sección
+        const sectionStart = sectionTop - windowHeight * 0.5; // Comenzar cuando llegue a la mitad
+        const sectionEnd = sectionBottom - windowHeight * 0.5; // Terminar cuando salga de la mitad
+        
+        const scrollProgress = Math.max(0, Math.min(1, 
+          (scrollTop - sectionStart) / (sectionEnd - sectionStart)
+        ));
+        
+        // Determinar qué paso está activo basado en el progreso
+        const newActiveStep = Math.max(0, Math.min(steps.length - 1, Math.floor(scrollProgress * steps.length)));
+        
+        if (newActiveStep !== activeStep) {
+          setActiveStep(newActiveStep);
+        }
+      } else {
+        // Si la sección no está visible, resetear al primer paso
+        if (scrollTop < sectionTop) {
+          setActiveStep(0);
+        }
       }
     };
 
@@ -97,17 +118,17 @@ function Process() {
               <p className="text-xl text-gray-300 leading-relaxed mb-10">
                 Un enfoque sistemático y probado para crear soluciones que realmente funcionen para tu negocio.
               </p>
-              <button className="bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-light transition-all duration-300 flex items-center gap-2 group cursor-pointer">
+              <Button variant="primary" size="lg" className="flex items-center gap-2 group">
                 ¡Trabajemos Juntos!
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </button>
+              </Button>
             </div>
           </div>
 
           {/* Columna derecha - Pasos del proceso */}
-          <div className="px-8 sm:px-12 lg:px-16 py-32">
+          <div className="px-8 sm:px-12 lg:px-16 py-32 text-left">
             <div className="max-w-2xl">
               <div className="space-y-16">
                 {steps.map((item, index) => (
